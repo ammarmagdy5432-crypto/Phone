@@ -22,9 +22,8 @@ const SCROLL_KEYFRAMES = [
   { progress: 0.28, x: 2.0, y: -0.5, rotX: 0.0,   rotY: -4.0, rotZ: 0.0,  scaleMultiplier: 0.99 },
   { progress: 0.37, x: 2.0, y: -0.5, rotX: 0.0,   rotY: -4.05,rotZ: 0.0,  scaleMultiplier: 0.99 },
   { progress: 0.44, x: 2.0, y: -0.5, rotX: -0.3,  rotY: -2.5, rotZ: 0.0,  scaleMultiplier: 0.9 },
-  { progress: 0.60, x: 2.0, y: -0.5, rotX: -0.35, rotY: -2.55, rotZ: 0.0,  scaleMultiplier: 0.9 },
-  { progress: 0.65, x: 2, y: 2.8,  rotX: 0.0,   rotY: -2.5, rotZ: 0.0,  scaleMultiplier: 0.9 },
-  { progress: 0.75, x: 2, y: 6.0,  rotX: 0,  rotY: -2.5, rotZ: 0.0,  scaleMultiplier: 0.9 },
+  { progress: 0.587, x: 2.0, y: -0.5, rotX: -0.35, rotY: -2.55, rotZ: 0.0,  scaleMultiplier: 0.9 },
+{ progress: 0.70, x: 2.0, y:5, rotX: 0.0,   rotY: -2.5, rotZ: 0.0,  scaleMultiplier: 0.9 },
 ]
 
 const SCROLL_FADE_START = 0.73

@@ -34,7 +34,7 @@ export default function ColorPickerSection() {
   };
 
   const scaleUp = {
-    hidden: { opacity: 0, scale: 0.85 },
+    hidden: { opacity: 0, scale: 1 },
     visible: { 
       opacity: 1, 
       scale: 1, 
