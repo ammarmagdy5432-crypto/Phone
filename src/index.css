@@ -1,12 +1,43 @@
-/* مهم جداً: تأكد إن الـ body مش مقفول عليه overflow */
+/* ============================================================
+   🍎 iPhone 15 Pro — Global Styles & Responsive Layout
+   Breakpoints:
+     Mobile  : <= 640px
+     Tablet  : 641px - 1024px
+     Desktop : > 1024px
+   ============================================================ */
+
+:root {
+  --bg-primary: #000000;
+  --bg-elevated: #0a0a0c;
+  --surface-glass: rgba(255, 255, 255, 0.04);
+  --surface-glass-hover: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.24);
+  --text-primary: #f5f5f7;
+  --text-secondary: #a1a1a6;
+  --text-muted: #6e6e73;
+  --accent-titanium: #c7bfb3;
+  --accent-blue: #2997ff;
+  --nav-height: 48px;
+  --font-apple: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-apple);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html, body {
   margin: 0;
   padding: 0;
   max-width: 100%;
-  overflow-x: hidden; /* يمنع أي عنصر بعرض ثابت إنه يعمل سكرول أفقي على الموبايل */
-      background-color: rgb(72, 72, 72);
-
-  /* ممنوع تحط overflow : hidden هنا! */
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 *, *::before, *::after {
@@ -14,185 +45,30 @@ html, body {
 }
 
 /* ============================================================
-   📐 Breakpoints المستخدمة في الملف ده:
-   Mobile  : <= 640px
-   Tablet  : 641px - 1024px
-   Desktop : > 1024px
+   🧭 Apple Glassmorphic Navbar
    ============================================================ */
-
-/* 1. السيكشن الحاكم لمسافة السكرول */
-.sticky-section {
-  height: 200vh; /* المسافة دي هي مدة ثبات التكست (كبر الرقم عشان يفضل ثابت أكتر) */
-  position: relative;
-    background-color: aqua;
-    pointer-events: auto;
-
-}
-.sticky-text {
-  z-index: 500;
-  text-align: center;
-  pointer-events: auto;
-  align-items: center;
-  top: 10vh;
-  position: static;
-
- /* خليه يتحدد بحجم المحتوى الداخلي فقط */
-}
-.st{
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: clamp(28px, 5vw, 54px) !important;
-    margin-left: 0 !important;
-    padding: 0 20px;
-    text-align: center;
-    width: 100%;
-}
-.sticky-text2 {
-  position: static;
-  z-index: 50;
-  top: -40vh;
-  text-align: center;
-  pointer-events: auto;
-  align-items: center;
-  justify-self: center;
-  margin-top: -290px;
-  height: auto;
-  min-height: 120vh;
-  width: 100%;
-  max-width: 1100px;
-  display: flex !important;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 24px;
-  padding: 40px 16px;
-  /* خليه يتحدد بحجم المحتوى الداخلي فقط */
-}
-
-/* ============================================================
-   🎨 Color Picker / Orbit Section (responsive rewrite)
-   ============================================================ */
-.color-picker-columns {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(16px, 4vw, 60px);
-  width: 100%;
-  flex-wrap: wrap;
-
-}
-
-.color-buttons-col {
-  display: flex;
-  flex-direction: column;
-  width: auto;
-  order: 1;
-  margin-left: 0;
-}
-
-.color-btn {
-  padding: 10px 20px;
-  border-radius: 20px;
-  color: #fff;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: clamp(15px, 2vw, 22px);
-  transition: border 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  pointer-events: auto;
-  margin: 8px 0;
-  width: clamp(140px, 20vw, 200px);
-  text-align: center;
-  z-index: 11;
-        margin-left: 20vw;
-
-}
-
-.phone-preview-col {
-  position: relative;
-  border-radius: 10px;
-  width: min(90vw, 460px);
-  order: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.phone-preview-stage {
-  position: relative;
-  width: min(85vw, 400px);
-  aspect-ratio: 4 / 3;
-}
-
-.phone-preview-img {
-  position: absolute;
-  inset: 0;
-  border-radius: 24px;
-  transition: all 0.3s ease;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  margin-right: 8VW;
-}
-
-.phone-preview-3d {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  justify-self: center;
-  justify-items: center;
-  
-}
-
-@media (max-width: 900px) {
-  .color-picker-columns {
-    flex-direction: column;
-  }
-  .color-buttons-col {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    order: 2;
-  }
-  .phone-preview-col {
-    order: 1;
-  }
-  .color-btn {
-    margin: 6px;
-  }
-}
-
-.normal-section {
-  height: 100vh;
-  color: rgb(98, 6, 6);
-      pointer-events: auto;
-
-}
-/* التنسيقات العامة للـ Navbar */
 .apple-nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 44px;
-  background-color: rgba(200, 50, 50, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  height: var(--nav-height);
+  background-color: rgba(12, 12, 14, 0.65);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   z-index: 9999;
-  transition: background-color 0.3s ease;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  font-family: var(--font-apple);
 }
 
-/* في حالة الثيم الداكن المفضل لشاشات أبل الرسمية */
-@media (prefers-color-scheme: dark) {
-  .apple-nav {
-    background-color: rgb(72, 72, 72);
-    color: rgba(0, 0, 0, 0.8);
-  }
+.apple-nav.scrolled {
+  background-color: rgba(16, 16, 18, 0.88);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
 }
 
 .nav-container {
-  max-width: 1024px;
+  max-width: 1080px;
   height: 100%;
   margin: 0 auto;
   padding: 0 22px;
@@ -201,41 +77,40 @@ html, body {
   align-items: center;
 }
 
-/* الشعار والأيقونات */
 .nav-logo, .nav-icon {
-  color: white;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   text-decoration: none;
-  opacity: 0.8;
-  transition: opacity 0.2s ease;
+  opacity: 0.82;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .nav-logo:hover, .nav-icon:hover {
   opacity: 1;
 }
 
-/* قائمة الروابط */
 .nav-links {
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 28px;
+  gap: 26px;
 }
 
 .nav-links a {
-  color: white;
+  color: var(--text-primary);
   text-decoration: none;
   font-size: 12px;
   font-weight: 400;
   letter-spacing: -0.01em;
-  opacity: 0.8;
-  transition: opacity 0.2s ease;
+  opacity: 0.78;
+  transition: opacity 0.2s ease, color 0.2s ease;
 }
 
 .nav-links a:hover {
   opacity: 1;
+  color: #ffffff;
 }
 
 .nav-actions {
@@ -244,137 +119,674 @@ html, body {
   gap: 18px;
 }
 
-/* زر الموبايل */
+.nav-cta-pill {
+  padding: 5px 12px;
+  border-radius: 980px;
+  background-color: var(--accent-blue);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-cta-pill:hover {
+  background-color: #147ce5;
+  transform: translateY(-1px);
+}
+
 .mobile-toggle {
   display: none;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
-  width: 16px;
-  height: 12px;
+  padding: 4px;
+  width: 24px;
+  height: 20px;
   position: relative;
-  flex-direction: column;   
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  color: var(--text-primary);
 }
 
 .mobile-toggle span {
   display: block;
   width: 100%;
-  height: 1.2px;
+  height: 1.5px;
   background-color: currentColor;
+  border-radius: 2px;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .mobile-toggle.active span:nth-child(1) {
-  transform: translateY(5px) rotate(45deg);
+  transform: translateY(3.75px) rotate(45deg);
 }
 
 .mobile-toggle.active span:nth-child(2) {
-  transform: translateY(-5.5px) rotate(-45deg);
+  transform: translateY(-3.75px) rotate(-45deg);
 }
 
-/* التجاوب مع الموبايل (Responsive) */
 @media (max-width: 833px) {
   .mobile-toggle {
     display: flex;
   }
 
+  .nav-cta-pill {
+    display: none;
+  }
+
   .nav-links {
     position: fixed;
-    top: 44px;
+    top: var(--nav-height);
     left: 0;
     width: 100%;
     height: 0;
-    background-color: rgba(194, 194, 219, 0.98);
-    backdrop-filter: blur(20px);
+    background-color: rgba(12, 12, 14, 0.97);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     flex-direction: column;
-    padding: 0 40px;
-    gap: 16px;
+    padding: 0 32px;
+    gap: 4px;
     overflow: hidden;
-    transition: height 0.3s cubic-bezier(0.25, 1, 0.5, 1), padding 0.3s ease;
+    transition: height 0.35s cubic-bezier(0.25, 1, 0.5, 1), padding 0.3s ease;
   }
 
   .nav-links.open {
-    height: calc(100vh - 44px);
-    padding-top: 20px;
+    height: calc(100vh - var(--nav-height));
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .nav-links li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .nav-links a {
-    font-size: 17px;
+    display: block;
+    padding: 12px 0;
+    font-size: 19px;
     font-weight: 600;
-    color: #f5f5f7;
+    color: var(--text-primary);
+    opacity: 0.9;
   }
 }
 
+/* ============================================================
+   📱 Fixed 3D Phone Layer
+   ============================================================ */
+.phone {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  pointer-events: none; /* يسمح بالسكرول والنقر على العناصر أسفل الكانفاس */
+}
 
-/* الحاوية الرئيسية للتثبيت وحجز المساحة */
-.side-text-container {
-  position: static;
-  left: 0;
-  top: 10vh; /* ترك 10% أعلى و 10% أسفل ليصبح المجموع 80% */
-  height: 80vh; /* 80% من طول الشاشة */
-  width: 50vw; /* عرض الشريط الجانبي */
+/* ============================================================
+   🦸 Hero Section (App.jsx)
+   ============================================================ */
+.h1Text {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 55% at 65% 45%, rgba(199, 191, 179, 0.14) 0%, transparent 65%),
+    radial-gradient(circle at 25% 30%, #1c1c20 0%, #000000 68%);
+  z-index: 2;
   display: flex;
-  justify-content: left;
   align-items: center;
-  z-index: 0;
-  pointer-events: none;
-  background-color: #c71919;
-  border-radius: 80%; 
-  margin-left: -520px; /* مسافة من الحافة اليسرى للشاشة */
-  
-  /* لمنع إعاقة الضغط على عناصر الصفحة خلفه */
 }
 
-/* النص وتدويره مع محاذاة العرض والارتفاع */
-.side-text {
-  /* تدوير النص بـ 90 درجة عكس عقارب الساعة ليقرأ من الأسفل للأعلى */
-  transform: rotate(-90deg);
-  transform-origin: center center;
-  
-  /* العرض هنا يمثل الارتفاع الفعلي بعد التدوير (80vh) */
-  width: 80vh; 
-  text-align: center;
-  white-space: nowrap;
+.hero-copy {
+  position: relative;
+  z-index: 5;
+  padding: 0 clamp(24px, 7vw, 110px);
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
 }
 
-.side-text span {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 4px; /* مسافة بين الحروف لتعطي مظهراً عصرياً */
-  color: rgba(0, 0, 0, 0.4); /* لون رمادي خفيف مناسب للتصاميم الحديثة */
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 980px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--accent-titanium);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  margin-bottom: 6px;
 }
 
-/* في حالة الثيم الداكن (Dark Mode) */
-@media (prefers-color-scheme: dark) {
-  .side-text span {
-    color: rgba(255, 255, 255, 0.4);
+.hero-title {
+  font-size: clamp(38px, 7vw, 84px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 0;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.hero-subtitle {
+  font-size: clamp(72px, 15vw, 176px);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  margin: 0;
+  line-height: 0.92;
+  background: linear-gradient(135deg, #ffffff 0%, #d4cec4 45%, #7c7870 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-tagline {
+  margin: 14px 0 0;
+  font-size: clamp(15px, 2vw, 20px);
+  line-height: 1.5;
+  color: var(--text-secondary);
+  max-width: 440px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.hero-btn-primary {
+  padding: 12px 24px;
+  border-radius: 980px;
+  background-color: var(--accent-blue);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.hero-btn-primary:hover {
+  background-color: #147ce5;
+  transform: translateY(-1px);
+}
+
+.hero-btn-secondary {
+  padding: 12px 24px;
+  border-radius: 980px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  z-index: 5;
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 28px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
+}
+
+/* ============================================================
+   📜 Sticky Text Scroll Section (Text.jsx)
+   ============================================================ */
+.scroll-story-section {
+  direction: ltr;
+  text-align: left;
+  background: radial-gradient(circle at 75% 50%, #141418 0%, #000000 65%);
+  color: var(--text-primary);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+  padding: 0 clamp(20px, 5vw, 72px);
+}
+
+.text {
+  position: relative;
+  width: 100%;
+  max-width: min(44vw, 500px);
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .text {
+    max-width: min(92vw, 540px);
   }
 }
 
+.scroll-panel {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
 
-/* الألوان والخطوط الأساسية لـ Apple Footer */
+.scroll-step-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-titanium);
+}
+
+.scroll-step-badge::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background-color: var(--accent-titanium);
+  opacity: 0.7;
+}
+
+.scroll-item-title {
+  color: #ffffff;
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 0;
+  line-height: 1.05;
+}
+
+.scroll-item-text {
+  padding: 20px 24px;
+  border-radius: 20px;
+  color: rgba(245, 245, 247, 0.86);
+  font-weight: 400;
+  font-size: clamp(14px, 1.8vw, 17px);
+  line-height: 1.65;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  margin: 0;
+}
+
+.scroll-item-head {
+  margin: 6px 0 0;
+  font-size: clamp(34px, 6.5vw, 72px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(90deg, #ffffff 0%, #86868b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (max-width: 640px) {
+  .scroll-story-section {
+    align-items: flex-end;
+    padding-bottom: 48px;
+  }
+  .text {
+    min-height: 310px;
+  }
+  .scroll-item-text {
+    padding: 16px 18px;
+  }
+}
+
+/* ============================================================
+   ⚡ Power / Feature Section (Section.jsx)
+   ============================================================ */
+.power-section-wrapper {
+  position: relative;
+  width: 100%;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(41, 151, 255, 0.1) 0%, transparent 70%),
+    #000000;
+  padding: clamp(72px, 10vw, 120px) 20px;
+  pointer-events: auto;
+  z-index: 12;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.power-section {
+  width: min(100%, 920px);
+  margin: 0 auto;
+  color: var(--text-primary);
+}
+
+.power-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  margin-bottom: 12px;
+}
+
+.power-title {
+  font-size: clamp(32px, 5.5vw, 58px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  text-align: center;
+  margin: 0 0 14px;
+  background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.power-subtitle {
+  font-size: clamp(18px, 3vw, 26px);
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+.power-description {
+  font-size: clamp(15px, 2vw, 18px);
+  font-weight: 400;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 580px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.power-icons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2.5vw, 24px);
+  margin-top: 48px;
+  width: 100%;
+}
+
+.power-icon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 28px 18px;
+  border-radius: 22px;
+  background: var(--surface-glass);
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.power-icon-card:hover {
+  transform: translateY(-4px);
+  background: var(--surface-glass-hover);
+  border-color: var(--border-strong);
+}
+
+.power-icon-card img {
+  width: clamp(42px, 5vw, 60px);
+  height: clamp(42px, 5vw, 60px);
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5));
+}
+
+.power-icon-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .power-icons {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+  }
+}
+
+/* ============================================================
+   🎨 Color Picker / 360° Orbit Section (OrbitSection.jsx)
+   ============================================================ */
+.orbit-section {
+  position: relative;
+  z-index: 12;
+  background: radial-gradient(circle at 50% 45%, #1c1c20 0%, #000000 70%);
+  width: 100%;
+  color: var(--text-primary);
+  padding: clamp(64px, 9vw, 110px) 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.orbit-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.orbit-header {
+  text-align: center;
+  margin-bottom: clamp(32px, 5vw, 52px);
+}
+
+.orbit-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-titanium);
+  margin-bottom: 10px;
+}
+
+.st {
+  font-family: var(--font-apple);
+  font-size: clamp(28px, 4.8vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  color: var(--text-primary);
+}
+
+.orbit-subtitle {
+  margin: 10px auto 0;
+  font-size: 15px;
+  color: var(--text-secondary);
+  max-width: 480px;
+}
+
+.color-picker-columns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(24px, 5vw, 72px);
+  width: 100%;
+}
+
+.color-buttons-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(100%, 260px);
+  order: 1;
+}
+
+.color-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-family: var(--font-apple);
+  font-weight: 600;
+  font-size: 15px;
+  text-align: left;
+  width: 100%;
+  pointer-events: auto;
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.color-btn:hover {
+  background: rgba(255, 255, 255, 0.09);
+  transform: translateX(4px);
+}
+
+.color-btn.active {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.color-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+.color-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.color-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.color-finish {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.phone-preview-col {
+  position: relative;
+  width: min(92vw, 520px);
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.phone-preview-stage {
+  position: relative;
+  width: 100%;
+  height: clamp(320px, 46vw, 460px);
+  border-radius: 28px;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.015) 70%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  cursor: grab;
+}
+
+.phone-preview-stage:active {
+  cursor: grabbing;
+}
+
+.phone-preview-3d {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+.orbit-hint {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 980px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 900px) {
+  .color-picker-columns {
+    flex-direction: column;
+  }
+  .phone-preview-col {
+    order: 1;
+  }
+  .color-buttons-col {
+    order: 2;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 520px;
+  }
+  .color-btn {
+    width: auto;
+    min-width: 140px;
+    flex: 1 1 140px;
+  }
+  .color-btn:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* ============================================================
+   🦶 Apple Footer (foter.jsx)
+   ============================================================ */
 .apple-footer {
-  background-color: #f5f5f7;
-  color: #6e6e73;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  position: relative;
+  z-index: 12;
+  background-color: #111113;
+  color: #86868b;
+  font-family: var(--font-apple);
   font-size: 12px;
   line-height: 1.33337;
   font-weight: 400;
   letter-spacing: -0.01em;
-  padding: 20px 0 24px;
-  border-top: 1px solid #d2d2d7;
-}
-
-@media (prefers-color-scheme: dark) {
-  .apple-footer {
-    background-color: #161617;
-    color: #86868b;
-    border-top-color: #424245;
-  }
+  padding: 28px 0 32px;
+  border-top: 1px solid #2c2c2e;
 }
 
 .footer-container {
@@ -384,7 +796,7 @@ html, body {
 }
 
 .apple-footer a {
-  color: #424245;
+  color: #d2d2d7;
   text-decoration: none;
 }
 
@@ -392,13 +804,6 @@ html, body {
   text-decoration: underline;
 }
 
-@media (prefers-color-scheme: dark) {
-  .apple-footer a {
-    color: #d2d2d7;
-  }
-}
-
-/* الشروط والملاحظات */
 .footer-disclaimer {
   padding-bottom: 12px;
 }
@@ -409,17 +814,10 @@ html, body {
 
 .footer-separator {
   height: 1px;
-  background-color: #d2d2d7;
+  background-color: #2c2c2e;
   margin: 12px 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  .footer-separator {
-    background-color: #424245;
-  }
-}
-
-/* توزيع الأعمدة للشاشات الكبيرة */
 .footer-directory {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -430,17 +828,11 @@ html, body {
 .col-title {
   font-size: 12px;
   font-weight: 600;
-  color: #1d1d1f;
+  color: #f5f5f7;
   margin-bottom: 9px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-@media (prefers-color-scheme: dark) {
-  .col-title {
-    color: #f5f5f7;
-  }
 }
 
 .mobile-chevron {
@@ -457,23 +849,15 @@ html, body {
   margin-bottom: 9px;
 }
 
-/* طريقة الشراء */
 .footer-buy-info {
   margin-bottom: 8px;
   padding-bottom: 8px;
 }
 
 .footer-buy-info a {
-  color: #0066cc;
+  color: #2997ff;
 }
 
-@media (prefers-color-scheme: dark) {
-  .footer-buy-info a {
-    color: #2997ff;
-  }
-}
-
-/* الحقوق والروابط القانونية */
 .footer-legal {
   display: flex;
   flex-wrap: wrap;
@@ -496,12 +880,9 @@ html, body {
   content: "|";
   position: absolute;
   right: -9px;
-  color: #d2d2d7;
+  color: #424245;
 }
 
-/* ============================================================
-   📱 التجاوب مع الموبايل والشاشات الصغيرة (Accordion Dropdown)
-   ============================================================ */
 @media (max-width: 833px) {
   .footer-directory {
     display: flex;
@@ -510,20 +891,14 @@ html, body {
   }
 
   .directory-col {
-    border-bottom: 1px solid #d2d2d7;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .directory-col {
-      border-bottom-color: #424245;
-    }
+    border-bottom: 1px solid #2c2c2e;
   }
 
   .col-title {
-    padding: 10px 0;
+    padding: 12px 0;
     margin: 0;
     cursor: pointer;
-    font-weight: 400;
+    font-weight: 500;
   }
 
   .mobile-chevron {
@@ -533,7 +908,7 @@ html, body {
   }
 
   .directory-col.is-open .mobile-chevron {
-    transform: rotate(45deg); /* تحويل علامة + إلى x عند الفتح */
+    transform: rotate(45deg);
   }
 
   .col-links {
@@ -553,109 +928,3 @@ html, body {
     align-items: flex-start;
   }
 }
-
-/* ============================================================
-   🦸 Hero section (App.jsx)
-   ============================================================ */
-.hero-copy {
-  color: rgba(255, 255, 255, 0.74);
-  position: absolute;
-  top: 20%;
-  left: 6%;
-  right: 6%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.hero-title {
-  font-size: clamp(34px, 8vw, 90px);
-  margin: 0;
-  line-height: 1;
-}
-
-.hero-subtitle {
-  font-size: clamp(64px, 16vw, 170px);
-  margin-top: clamp(-40px, -4vw, -10px);
-  line-height: 1;
-}
-
-/* ============================================================
-   ⚡ Power / feature section (Section.jsx)
-   ============================================================ */
-.power-section {
-  width: min(92vw, 680px);
-  padding: 0 16px;
-}
-
-.power-title {
-  font-size: clamp(26px, 6vw, 50px);
-}
-
-.power-subtitle {
-  font-size: clamp(18px, 4vw, 30px);
-}
-
-.power-icons img {
-  width: clamp(28px, 6vw, 70px) !important;
-  height: auto !important;
-  margin: 0 clamp(12px, 4vw, 50px) !important;
-}
-
-/* ============================================================
-   📜 Sticky text scroll section (Text.jsx)
-   ============================================================ */
-.scroll-text-inner {
-  position: relative;
-  width: min(90vw, 500px);
-  min-height: 200px;
-  margin-left: clamp(16px, 15vw, 250px);
-}
-
-.scroll-item-title {
-  color: #ffffff;
-  font-size: clamp(30px, 6vw, 50px);
-  margin: 0;
-}
-
-.scroll-item-text {
-  padding: 10px 20px;
-  border-radius: 20px;
-  color: rgba(255, 255, 255, 0.74);
-  font-weight: bold;
-  font-size: clamp(14px, 2.4vw, 19px);
-  box-shadow: 0 4px 6px rgba(172, 164, 164, 0.2);
-  margin: 5px 0;
-  background-color: #020202;
-}
-
-.scroll-item-head {
-  color: rgba(255, 255, 255, 0.74);
-  margin-top: clamp(40px, 8vw, 100px);
-  font-size: clamp(32px, 8vw, 80px);
-  margin-left: clamp(0px, 4vw, 80px);
-}
-
-@media (max-width: 640px) {
-  .hero-copy { top: 16%; }
-  .apple-nav { height: 44px; }
-  .nav-container { padding: 0 12px; }
-  .nav-links { gap: 20px; }
-}
-
-
-@media (max-width: 740px) {
-.text{
-margin-top: -170px;
-}
-
-.phone{
-
-padding-top: 100px;
-
-}
-
-}
-
-
-
