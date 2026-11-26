@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 /**
  * useViewport
  * Tracks window width/height and exposes simple breakpoint flags.
- * Needed because the 3D scene (react-three-fiber) and some scroll-driven
- * layouts use JS values (camera position, keyframe offsets) that CSS
- * media queries can't reach — everything else should prefer plain CSS.
+ * Needed because the 3D scene (react-three-fiber) uses JS values (camera
+ * position, keyframe offsets) that CSS media queries can't reach —
+ * everything else should prefer plain CSS.
  *
  * Breakpoints match index.css:
  *   mobile  : <= 640px
